@@ -3,14 +3,8 @@
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
 
-  // For GitHub Pages project sites, assets must be served under
-  // "/<repo-name>/". Use the Actions env to set base only in CI,
-  // keeping local dev paths unchanged.
-  const isCI = !!process.env.GITHUB_ACTIONS;
-  const repoBase = '/landing/';
-
   export default defineConfig({
-    base: isCI ? repoBase : '/',
+    base: '/',
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
