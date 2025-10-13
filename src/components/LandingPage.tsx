@@ -185,7 +185,7 @@ export function LandingPage() {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden border shadow-2xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzYwMzUzMzA0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="/main.png"
                   alt="ClimaFarma Dashboard"
                   className="w-full h-full object-cover"
                 />
@@ -234,7 +234,7 @@ export function LandingPage() {
             <div className="relative order-2 lg:order-1">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden border shadow-xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1715520530023-cc8a1b2044ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaGFybWFjeSUyMG1lZGljYWwlMjBzdG9yYWdlfGVufDF8fHx8MTc2MDM2ODk2OXww&ixlib=rb-4.1.0&q=80&w=1080"
+                  src="/second.png"
                   alt="Pharmacy Storage"
                   className="w-full h-full object-cover"
                 />
@@ -300,11 +300,6 @@ export function LandingPage() {
                       </div>
                     ) : (
                       <div className="text-2xl">{t('portal.contact.sales')}</div>
-                    )}
-                    {pkg.price > 0 && (
-                      <p className="text-sm text-muted-foreground mt-1">
-                        + {t('portal.subscription')}
-                      </p>
                     )}
                   </div>
 

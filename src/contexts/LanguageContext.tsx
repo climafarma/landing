@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export type Language = 'en' | 'es' | 'ca';
 
@@ -15,7 +15,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'nav.home': 'Home',
     'nav.features': 'Features',
-    'nav.portal': 'Customer Portal',
+    'nav.pricing': 'Pricing',
     'nav.contact': 'Contact',
     
     // Hero
@@ -82,22 +82,22 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.starter.gateway': '1 Gateway',
     'portal.starter.sensors': '3 Temperature & Humidity Sensors',
     'portal.starter.support': 'Email Support',
-    'portal.starter.warranty': '1 Year Warranty',
+    'portal.starter.warranty': 'Full Warranty',
     
     'portal.professional': 'Professional Kit',
     'portal.professional.desc': 'Ideal for medium-sized pharmacies',
     'portal.professional.gateway': '1 Gateway',
     'portal.professional.sensors': '6 Temperature & Humidity Sensors',
     'portal.professional.support': 'Priority Support',
-    'portal.professional.warranty': '2 Year Warranty',
+    'portal.professional.warranty': 'Full Warranty',
     'portal.professional.badge': 'Most Popular',
     
     'portal.enterprise': 'Enterprise Kit',
     'portal.enterprise.desc': 'For large pharmacy chains',
-    'portal.enterprise.gateway': '2 Gateways',
-    'portal.enterprise.sensors': '12 Temperature & Humidity Sensors',
+    'portal.enterprise.gateway': '∞ Gateways',
+    'portal.enterprise.sensors': '∞ Temperature & Humidity Sensors',
     'portal.enterprise.support': '24/7 Phone Support',
-    'portal.enterprise.warranty': '3 Year Warranty',
+    'portal.enterprise.warranty': 'Full Warranty',
     'portal.enterprise.custom': 'Custom Integration',
     
     'portal.subscription': 'Monthly Subscription',
@@ -121,7 +121,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'nav.home': 'Inicio',
     'nav.features': 'Características',
-    'nav.portal': 'Portal de Clientes',
+    'nav.pricing': 'Precios',
     'nav.contact': 'Contacto',
     
     // Hero
@@ -153,7 +153,7 @@ const translations: Record<Language, Record<string, string>> = {
     'feature.support.description': 'Soporte técnico experto cuando lo necesites',
     
     // Benefits
-    'benefits.title': '¿Por Qué Elegir ClimaFarma?',
+    'benefits.title': '¿Por qué elegir ClimaFarma?',
     'benefits.compliance': 'Cumplimiento Normativo',
     'benefits.compliance.desc': 'Cumple todos los requisitos de almacenamiento farmacéutico con documentación automatizada',
     'benefits.safety': 'Seguridad de Medicamentos',
@@ -162,7 +162,7 @@ const translations: Record<Language, Record<string, string>> = {
     'benefits.efficiency.desc': 'Ahorra tiempo con monitorización automatizada e informes fáciles',
     
     // CTA Section
-    'cta.title': '¿Listo para Proteger Tu Farmacia?',
+    'cta.title': '¿Listo para proteger tu farmacia?',
     'cta.subtitle': 'Únete a cientos de farmacias que ya usan ClimaFarma',
     'cta.button': 'Ordenar Ahora',
     
@@ -180,7 +180,7 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.rights': 'Todos los derechos reservados.',
     
     // Portal
-    'portal.title': 'Ordena Tu Kit de Monitorización Climática',
+    'portal.title': 'Ordena tu kit de monitorización climática',
     'portal.subtitle': 'Selecciona el paquete perfecto para tu farmacia',
     
     'portal.starter': 'Kit Inicial',
@@ -188,22 +188,22 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.starter.gateway': '1 Gateway',
     'portal.starter.sensors': '3 Sensores de Temperatura y Humedad',
     'portal.starter.support': 'Soporte por Email',
-    'portal.starter.warranty': '1 Año de Garantía',
+    'portal.starter.warranty': 'Garantía Completa',
     
     'portal.professional': 'Kit Profesional',
     'portal.professional.desc': 'Ideal para farmacias medianas',
     'portal.professional.gateway': '1 Gateway',
     'portal.professional.sensors': '6 Sensores de Temperatura y Humedad',
     'portal.professional.support': 'Soporte Prioritario',
-    'portal.professional.warranty': '2 Años de Garantía',
+    'portal.professional.warranty': 'Garantía Completa',
     'portal.professional.badge': 'Más Popular',
     
     'portal.enterprise': 'Kit Enterprise',
     'portal.enterprise.desc': 'Para cadenas de farmacias grandes',
-    'portal.enterprise.gateway': '2 Gateways',
-    'portal.enterprise.sensors': '12 Sensores de Temperatura y Humedad',
+    'portal.enterprise.gateway': '∞ Gateways',
+    'portal.enterprise.sensors': '∞ Sensores de Temperatura y Humedad',
     'portal.enterprise.support': 'Soporte Telefónico 24/7',
-    'portal.enterprise.warranty': '3 Años de Garantía',
+    'portal.enterprise.warranty': 'Garantía Completa',
     'portal.enterprise.custom': 'Integración Personalizada',
     
     'portal.subscription': 'Suscripción Mensual',
@@ -220,14 +220,14 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.form.submit': 'Enviar Pedido',
     'portal.form.cancel': 'Cancelar',
     
-    'portal.success': '¡Pedido Enviado Exitosamente!',
+    'portal.success': '¡Solicitud enviada!',
     'portal.success.message': 'Nuestro equipo te contactará en 24 horas para confirmar tu pedido y programar la instalación.',
   },
   ca: {
     // Navigation
     'nav.home': 'Inici',
     'nav.features': 'Característiques',
-    'nav.portal': 'Portal de Clients',
+    'nav.pricing': 'Preus',
     'nav.contact': 'Contacte',
     
     // Hero
@@ -259,7 +259,7 @@ const translations: Record<Language, Record<string, string>> = {
     'feature.support.description': 'Suport tècnic expert quan el necessitis',
     
     // Benefits
-    'benefits.title': 'Per Què Triar ClimaFarma?',
+    'benefits.title': 'Per què triar ClimaFarma?',
     'benefits.compliance': 'Compliment Normatiu',
     'benefits.compliance.desc': 'Compleix tots els requisits d\'emmagatzematge farmacèutic amb documentació automatitzada',
     'benefits.safety': 'Seguretat de Medicaments',
@@ -268,7 +268,7 @@ const translations: Record<Language, Record<string, string>> = {
     'benefits.efficiency.desc': 'Estalvia temps amb monitorització automatitzada i informes fàcils',
     
     // CTA Section
-    'cta.title': 'Preparat per Protegir la Teva Farmàcia?',
+    'cta.title': 'Preparat per protegir la teva farmàcia?',
     'cta.subtitle': 'Uneix-te a centenars de farmàcies que ja fan servir ClimaFarma',
     'cta.button': 'Ordenar Ara',
     
@@ -286,7 +286,7 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.rights': 'Tots els drets reservats.',
     
     // Portal
-    'portal.title': 'Ordena el Teu Kit de Monitorització Climàtica',
+    'portal.title': 'Ordena el teu kit de monitorització climàtica',
     'portal.subtitle': 'Selecciona el paquet perfecte per a la teva farmàcia',
     
     'portal.starter': 'Kit Inicial',
@@ -294,22 +294,22 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.starter.gateway': '1 Gateway',
     'portal.starter.sensors': '3 Sensors de Temperatura i Humitat',
     'portal.starter.support': 'Suport per Email',
-    'portal.starter.warranty': '1 Any de Garantia',
+    'portal.starter.warranty': 'Garantia Completa',
     
     'portal.professional': 'Kit Professional',
     'portal.professional.desc': 'Ideal per a farmàcies mitjanes',
     'portal.professional.gateway': '1 Gateway',
     'portal.professional.sensors': '6 Sensors de Temperatura i Humitat',
     'portal.professional.support': 'Suport Prioritari',
-    'portal.professional.warranty': '2 Anys de Garantia',
+    'portal.professional.warranty': 'Garantia Completa',
     'portal.professional.badge': 'Més Popular',
     
     'portal.enterprise': 'Kit Enterprise',
     'portal.enterprise.desc': 'Per a cadenes de farmàcies grans',
-    'portal.enterprise.gateway': '2 Gateways',
-    'portal.enterprise.sensors': '12 Sensors de Temperatura i Humitat',
+    'portal.enterprise.gateway': '∞ Gateways',
+    'portal.enterprise.sensors': '∞ Sensors de Temperatura i Humitat',
     'portal.enterprise.support': 'Suport Telefònic 24/7',
-    'portal.enterprise.warranty': '3 Anys de Garantia',
+    'portal.enterprise.warranty': 'Garantia Completa',
     'portal.enterprise.custom': 'Integració Personalitzada',
     
     'portal.subscription': 'Subscripció Mensual',
@@ -332,14 +332,36 @@ const translations: Record<Language, Record<string, string>> = {
 };
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en');
+  const supportedLanguages: Language[] = ['en', 'es', 'ca'];
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('climafarma-language') as Language;
-    if (savedLanguage && ['en', 'es', 'ca'].includes(savedLanguage)) {
-      setLanguageState(savedLanguage);
+  const getInitialLanguage = (): Language => {
+    // 1) Respect persisted choice if valid
+    try {
+      const saved = localStorage.getItem('climafarma-language') as Language | null;
+      if (saved && supportedLanguages.includes(saved)) return saved;
+    } catch (_) {
+      // Ignore access errors (e.g., SSR or privacy mode)
     }
-  }, []);
+
+    // 2) Try to infer from browser settings (navigator.languages preferred)
+    if (typeof navigator !== 'undefined') {
+      const candidates = Array.isArray((navigator as any).languages)
+        ? (navigator as any).languages
+        : [(navigator as any).language || ''];
+
+      for (const l of candidates) {
+        const base = String(l || '')
+          .toLowerCase()
+          .split('-')[0] as Language;
+        if (supportedLanguages.includes(base)) return base;
+      }
+    }
+
+    // 3) Default fallback to Spanish
+    return 'es';
+  };
+
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);

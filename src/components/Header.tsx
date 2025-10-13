@@ -54,7 +54,7 @@ export function Header() {
               onClick={() => scrollToSection('pricing')}
               className="transition-colors hover:text-foreground/80 text-foreground/60"
             >
-              {t('nav.portal')}
+              {t('nav.pricing')}
             </button>
           </nav>
 
@@ -111,7 +111,7 @@ export function Header() {
               }}
               className="block w-full text-left py-2 text-foreground/60"
             >
-              {t('nav.portal')}
+              {t('nav.pricing')}
             </button>
           </div>
         )}
