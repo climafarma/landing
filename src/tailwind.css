@@ -1,0 +1,6 @@
+/* Tailwind v4 entry file */
+@import "tailwindcss";
+
+/* Your design tokens and base layers live in globals.css */
+/* Keep importing it in main.tsx so overrides cascade after Tailwind's base. */
+

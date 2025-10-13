@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, ThermometerSun, Bell, Download, LayoutDashboard, Server, Headphones, Check } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ThermometerSun, Bell, Download, LayoutDashboard, Server, Headphones, Check, Percent } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
@@ -17,7 +17,9 @@ interface Package {
   id: PackageType;
   name: string;
   description: string;
-  price: number;
+  monthlyPrice: number; // per month billing
+  yearlyPrice: number; // total per year billing
+  yearlyDiscount: number;
   features: string[];
   badge?: string;
 }
@@ -25,6 +27,7 @@ interface Package {
 export function LandingPage() {
   const { t } = useLanguage();
   const [selectedPackage, setSelectedPackage] = useState<PackageType | null>(null);
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     pharmacyName: '',
@@ -87,7 +90,9 @@ export function LandingPage() {
       id: 'starter',
       name: t('portal.starter'),
       description: t('portal.starter.desc'),
-      price: 49,
+      monthlyPrice: 49,
+      yearlyPrice: 49 * 12 * 0.85,
+      yearlyDiscount: 0.85,
       features: [
         t('portal.starter.gateway'),
         t('portal.starter.sensors'),
@@ -99,7 +104,9 @@ export function LandingPage() {
       id: 'professional',
       name: t('portal.professional'),
       description: t('portal.professional.desc'),
-      price: 89,
+      monthlyPrice: 89,
+      yearlyPrice: 89 * 12 * 0.85,
+      yearlyDiscount: 0.85,
       badge: t('portal.professional.badge'),
       features: [
         t('portal.professional.gateway'),
@@ -112,7 +119,8 @@ export function LandingPage() {
       id: 'enterprise',
       name: t('portal.enterprise'),
       description: t('portal.enterprise.desc'),
-      price: 0,
+      monthlyPrice: 0,
+      yearlyPrice: 0,
       features: [
         t('portal.enterprise.gateway'),
         t('portal.enterprise.sensors'),
@@ -270,6 +278,28 @@ export function LandingPage() {
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               {t('portal.subtitle')}
             </p>
+            <div className="inline-flex flex-col items-center gap-4">
+              <div className="inline-flex items-center rounded-md border p-1 gap-1 bg-background">
+                <Button
+                  variant={billingCycle === 'yearly' ? 'default' : 'ghost'}
+                  onClick={() => setBillingCycle('yearly')}
+                  className="h-9"
+                >
+                  {t('portal.billing.yearly')}
+                </Button>
+                <Button
+                  variant={billingCycle === 'monthly' ? 'default' : 'ghost'}
+                  onClick={() => setBillingCycle('monthly')}
+                  className="h-9"
+                >
+                  {t('portal.billing.monthly')}
+                </Button>
+              </div>
+              <div className="inline-flex items-center justify-center gap-2 mt-4 rounded-full px-3 py-1.5 border">
+                <Percent className="h-4 w-4" />
+                <span className="text-sm font-medium">{t('portal.billing.yearly.discount')}</span>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -293,10 +323,28 @@ export function LandingPage() {
 
                 <CardContent className="flex-grow space-y-6">
                   <div>
-                    {pkg.price > 0 ? (
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl">€{pkg.price}</span>
-                        <span className="text-muted-foreground">/ {t('portal.month')}</span>
+                    {(pkg.monthlyPrice) > 0 ? (
+                      <div className="space-y-1">
+                        <div className="flex items-baseline gap-2">
+                          {billingCycle === 'yearly' && (
+                            <span className="text-muted-foreground line-through text-lg">
+                              <s>{pkg.monthlyPrice.toFixed(2)}€</s>
+                            </span>
+                          )}
+                          <span className="text-4xl">
+                            {(billingCycle === 'yearly' ? (pkg.monthlyPrice * pkg.yearlyDiscount) : pkg.monthlyPrice).toFixed(2)}€
+                          </span>
+                          <span className="text-muted-foreground">/ {t('portal.month')}</span>
+                        </div>
+                        {billingCycle === 'monthly' ? (
+                          <p className="text-xs text-muted-foreground">
+                            {t('portal.billing.commitment')}
+                          </p>
+                        ) : (
+                          <p className="text-xs text-muted-foreground">
+                            {t('portal.billing.billed.annually')} • {(pkg.monthlyPrice * 12 * pkg.yearlyDiscount).toFixed(2)}€ / {t('portal.year')}
+                          </p>
+                        )}
                       </div>
                     ) : (
                       <div className="text-2xl">{t('portal.contact.sales')}</div>
@@ -356,8 +404,10 @@ export function LandingPage() {
           <DialogHeader>
             <DialogTitle>{t('portal.form.title')}</DialogTitle>
             <DialogDescription>
-              {selectedPackageData?.name} - 
-              {selectedPackageData?.price ? ` €${selectedPackageData.price}/${t('portal.month')}` : ` ${t('portal.contact.sales')}`}
+              {selectedPackageData?.name} -
+              {selectedPackageData && selectedPackageData.monthlyPrice > 0
+                ? ` €${(billingCycle === 'yearly' ? (selectedPackageData.monthlyPrice * 0.85) : selectedPackageData.monthlyPrice).toFixed(2)}/${t('portal.month')}${billingCycle === 'yearly' ? ` • ${t('portal.billing.billed.annually')} • €${(selectedPackageData.monthlyPrice * 12 * 0.85).toFixed(2)}/${t('portal.year')}` : ''}`
+                : ` ${t('portal.contact.sales')}`}
             </DialogDescription>
           </DialogHeader>
 

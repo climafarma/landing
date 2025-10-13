@@ -77,14 +77,14 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.title': 'Order Your Climate Monitoring Kit',
     'portal.subtitle': 'Select the perfect package for your pharmacy',
     
-    'portal.starter': 'Starter Kit',
+    'portal.starter': 'Essential Kit',
     'portal.starter.desc': 'Perfect for small pharmacies',
     'portal.starter.gateway': '1 Gateway',
     'portal.starter.sensors': '3 Temperature & Humidity Sensors',
     'portal.starter.support': 'Email Support',
     'portal.starter.warranty': 'Full Warranty',
     
-    'portal.professional': 'Professional Kit',
+    'portal.professional': 'Advanced Kit',
     'portal.professional.desc': 'Ideal for medium-sized pharmacies',
     'portal.professional.gateway': '1 Gateway',
     'portal.professional.sensors': '6 Temperature & Humidity Sensors',
@@ -102,6 +102,12 @@ const translations: Record<Language, Record<string, string>> = {
     
     'portal.subscription': 'Monthly Subscription',
     'portal.month': 'month',
+    'portal.year': 'year',
+    'portal.billing.monthly': 'Monthly',
+    'portal.billing.yearly': 'Yearly',
+    'portal.billing.yearly.discount': 'Enjoy a 15% discount when going yearly',
+    'portal.billing.commitment': '3-month minimum commitment',
+    'portal.billing.billed.annually': 'Billed annually',
     'portal.order': 'Order Now',
     'portal.contact.sales': 'Contact Sales',
     
@@ -164,7 +170,7 @@ const translations: Record<Language, Record<string, string>> = {
     // CTA Section
     'cta.title': '¿Listo para proteger tu farmacia?',
     'cta.subtitle': 'Únete a cientos de farmacias que ya usan ClimaFarma',
-    'cta.button': 'Ordenar Ahora',
+    'cta.button': 'Solicitar Ahora',
     
     // Footer
     'footer.company': 'Empresa',
@@ -183,14 +189,14 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.title': 'Ordena tu kit de monitorización climática',
     'portal.subtitle': 'Selecciona el paquete perfecto para tu farmacia',
     
-    'portal.starter': 'Kit Inicial',
+    'portal.starter': 'Kit Esencial',
     'portal.starter.desc': 'Perfecto para farmacias pequeñas',
     'portal.starter.gateway': '1 Gateway',
     'portal.starter.sensors': '3 Sensores de Temperatura y Humedad',
     'portal.starter.support': 'Soporte por Email',
     'portal.starter.warranty': 'Garantía Completa',
     
-    'portal.professional': 'Kit Profesional',
+    'portal.professional': 'Kit Avanzado',
     'portal.professional.desc': 'Ideal para farmacias medianas',
     'portal.professional.gateway': '1 Gateway',
     'portal.professional.sensors': '6 Sensores de Temperatura y Humedad',
@@ -208,7 +214,13 @@ const translations: Record<Language, Record<string, string>> = {
     
     'portal.subscription': 'Suscripción Mensual',
     'portal.month': 'mes',
-    'portal.order': 'Ordenar Ahora',
+    'portal.year': 'año',
+    'portal.billing.monthly': 'Mensual',
+    'portal.billing.yearly': 'Anual',
+    'portal.billing.yearly.discount': 'Disfruta de un 15% de descuento al elegir anual',
+    'portal.billing.commitment': 'Compromiso mínimo de 3 meses',
+    'portal.billing.billed.annually': 'Facturado anualmente',
+    'portal.order': 'Solicitar Ahora',
     'portal.contact.sales': 'Contactar Ventas',
     
     'portal.form.title': 'Completa Tu Pedido',
@@ -270,7 +282,7 @@ const translations: Record<Language, Record<string, string>> = {
     // CTA Section
     'cta.title': 'Preparat per protegir la teva farmàcia?',
     'cta.subtitle': 'Uneix-te a centenars de farmàcies que ja fan servir ClimaFarma',
-    'cta.button': 'Ordenar Ara',
+    'cta.button': 'Sol·licitar Ara',
     
     // Footer
     'footer.company': 'Empresa',
@@ -289,14 +301,14 @@ const translations: Record<Language, Record<string, string>> = {
     'portal.title': 'Ordena el teu kit de monitorització climàtica',
     'portal.subtitle': 'Selecciona el paquet perfecte per a la teva farmàcia',
     
-    'portal.starter': 'Kit Inicial',
+    'portal.starter': 'Kit Essencial',
     'portal.starter.desc': 'Perfecte per a farmàcies petites',
     'portal.starter.gateway': '1 Gateway',
     'portal.starter.sensors': '3 Sensors de Temperatura i Humitat',
     'portal.starter.support': 'Suport per Email',
     'portal.starter.warranty': 'Garantia Completa',
     
-    'portal.professional': 'Kit Professional',
+    'portal.professional': 'Kit Avançat',
     'portal.professional.desc': 'Ideal per a farmàcies mitjanes',
     'portal.professional.gateway': '1 Gateway',
     'portal.professional.sensors': '6 Sensors de Temperatura i Humitat',
@@ -314,7 +326,13 @@ const translations: Record<Language, Record<string, string>> = {
     
     'portal.subscription': 'Subscripció Mensual',
     'portal.month': 'mes',
-    'portal.order': 'Ordenar Ara',
+    'portal.year': 'any',
+    'portal.billing.monthly': 'Mensual',
+    'portal.billing.yearly': 'Anual',
+    'portal.billing.yearly.discount': 'Gaudeix d’un 15% de descompte si tries anual',
+    'portal.billing.commitment': 'Permanència mínima de 3 mesos',
+    'portal.billing.billed.annually': 'Facturat anualment',
+    'portal.order': 'Sol·licitar Ara',
     'portal.contact.sales': 'Contactar Vendes',
     
     'portal.form.title': 'Completa la Teva Comanda',
