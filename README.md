@@ -1,7 +1,5 @@
 
-  # Climafarma Website
-
-  This is a code bundle for Climafarma Website. The original project is available at https://www.figma.com/design/xjAYJuHhaT2sIgoi9sXVnT/Climafarma-Website.
+  # ClimaFarma Landing
 
   ## Running the code
 
