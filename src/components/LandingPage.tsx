@@ -133,13 +133,11 @@ export function LandingPage() {
         t('portal.enterprise.support'),
         t('portal.enterprise.warranty'),
         t('portal.enterprise.custom'),
-      ],
+      ], 
     },
   ];
 
   const handleOrderClick = (packageId: PackageType) => {
-    setSelectedPackage(packageId);
-    setIsDialogOpen(true);
     const pkg = packages.find(p => p.id === packageId);
     if (!pkg) return;
 
