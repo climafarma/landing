@@ -87,6 +87,8 @@ export function LandingPage() {
     },
   ];
 
+  const enablePricing = false;
+
   const packages: Package[] = [
     {
       id: 'starter',
@@ -214,8 +216,8 @@ export function LandingPage() {
 
   const selectedPackageData = packages.find(pkg => pkg.id === selectedPackage);
 
-  const scrollToPricing = () => {
-    const element = document.getElementById('pricing');
+  const scrollTo = (section: string) => {
+    const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -237,11 +239,11 @@ export function LandingPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" onClick={scrollToPricing}>
+                <Button size="lg" onClick={enablePricing ? () => scrollTo('pricing') : () => handleOrderClick('enterprise')}>
                   {t('hero.cta.primary')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection('features')}>
+                <Button size="lg" variant="outline" onClick={() => scrollTo('features')}>
                   {t('hero.cta.secondary')}
                 </Button>
               </div>
@@ -327,6 +329,7 @@ export function LandingPage() {
       </section>
 
       {/* Pricing Section */}
+      { enablePricing && (
       <section id="pricing" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
@@ -431,6 +434,7 @@ export function LandingPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
@@ -445,7 +449,7 @@ export function LandingPage() {
             <Button
               size="lg"
               variant="secondary"
-              onClick={scrollToPricing}
+              onClick={enablePricing ? () => scrollTo('pricing') : () => handleOrderClick('enterprise')}
             >
               {t('cta.button')}
               <ArrowRight className="ml-2 h-4 w-4" />
