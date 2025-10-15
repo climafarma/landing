@@ -133,7 +133,7 @@ export function LandingPage() {
         t('portal.enterprise.support'),
         t('portal.enterprise.warranty'),
         t('portal.enterprise.custom'),
-      ], 
+      ],
     },
   ];
 
@@ -152,7 +152,7 @@ export function LandingPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Simulate order submission
@@ -170,6 +170,46 @@ export function LandingPage() {
       address: '',
     });
     setSelectedPackage(null);
+
+    const payload = {
+      ...formData,
+      package: selectedPackageData?.name,
+      packageId: selectedPackage,
+      billingCycle: billingCycle,
+    };
+
+    try {
+      const response = await fetch('https://n8n.mipigu.com/webhook/b5ef2f0f-fbce-49f2-b194-4812580f4bc2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // On success
+      setIsDialogOpen(false);
+      toast.success(t('portal.success'), {
+        description: t('portal.success.message'),
+      });
+
+      // Reset form
+      setFormData({
+        pharmacyName: '',
+        contactPerson: '',
+        email: '',
+        phone: '',
+        address: '',
+      });
+      setSelectedPackage(null);
+    } catch (error) {
+      console.error('Failed to submit order:', error);
+      toast.error('Failed to submit order. Please try again later.');
+    }
   };
 
   const selectedPackageData = packages.find(pkg => pkg.id === selectedPackage);
@@ -350,7 +390,7 @@ export function LandingPage() {
                           <span className="text-4xl">
                             {(billingCycle === 'yearly' ? (pkg.monthlyPrice * pkg.yearlyDiscount) : pkg.monthlyPrice).toFixed(2)}€
                           </span>
-                          <span className="text-muted-foreground"> + IVA / {t('portal.month')}</span>
+                          <span className="text-muted-foreground">/ {t('portal.month')}</span>
                         </div>
                         {billingCycle === 'monthly' ? (
                           <p className="text-xs text-muted-foreground">
