@@ -350,7 +350,7 @@ export function LandingPage() {
                           <span className="text-4xl">
                             {(billingCycle === 'yearly' ? (pkg.monthlyPrice * pkg.yearlyDiscount) : pkg.monthlyPrice).toFixed(2)}€
                           </span>
-                          <span className="text-muted-foreground">/ {t('portal.month')}</span>
+                          <span className="text-muted-foreground"> + IVA / {t('portal.month')}</span>
                         </div>
                         {billingCycle === 'monthly' ? (
                           <p className="text-xs text-muted-foreground">
