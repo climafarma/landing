@@ -22,6 +22,8 @@ interface Package {
   yearlyDiscount: number;
   features: string[];
   badge?: string;
+  stripeLinkMonthly?: string;
+  stripeLinkYearly?: string;
 }
 
 export function LandingPage() {
@@ -99,6 +101,8 @@ export function LandingPage() {
         t('portal.starter.support'),
         t('portal.starter.warranty'),
       ],
+      stripeLinkMonthly: 'https://buy.stripe.com/7sYdR12825oP96R8OHbZe00',
+      stripeLinkYearly: 'https://buy.stripe.com/aFabITh2W04vdn7d4XbZe01',
     },
     {
       id: 'professional',
@@ -114,6 +118,8 @@ export function LandingPage() {
         t('portal.professional.support'),
         t('portal.professional.warranty'),
       ],
+      stripeLinkMonthly: 'https://buy.stripe.com/8x2cMXaEyg3t1Ep8OHbZe02',
+      stripeLinkYearly: 'https://buy.stripe.com/aFa7sDh2W7wXbeZ0ibbZe03',
     },
     {
       id: 'enterprise',
@@ -134,6 +140,18 @@ export function LandingPage() {
   const handleOrderClick = (packageId: PackageType) => {
     setSelectedPackage(packageId);
     setIsDialogOpen(true);
+    const pkg = packages.find(p => p.id === packageId);
+    if (!pkg) return;
+
+    const link = billingCycle === 'yearly' ? pkg.stripeLinkYearly : pkg.stripeLinkMonthly;
+
+    if (link) {
+      window.location.href = link;
+    } else {
+      // Fallback to dialog for packages without a direct link (e.g., Enterprise)
+      setSelectedPackage(packageId);
+      setIsDialogOpen(true);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
