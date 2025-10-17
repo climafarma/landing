@@ -37,7 +37,7 @@ export function Header() {
             </button>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          {/* <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="transition-colors hover:text-foreground/80 text-foreground/60"
@@ -56,7 +56,7 @@ export function Header() {
             >
               {t('nav.pricing')}
             </button>
-          </nav>
+          </nav> */}
 
           <div className="flex items-center space-x-4">
             <Select value={language} onValueChange={(value) => setLanguage(value as Language)}>
